@@ -13,6 +13,7 @@
 		7FE2609326A014DA00A23478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE2609126A014DA00A23478 /* Main.storyboard */; };
 		7FE2609526A014E300A23478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FE2609426A014E300A23478 /* Assets.xcassets */; };
 		7FE2609826A014E300A23478 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FE2609626A014E300A23478 /* LaunchScreen.storyboard */; };
+		7FE260A226A02C8400A23478 /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE260A126A02C8400A23478 /* SlidingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7FE2609426A014E300A23478 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7FE2609726A014E300A23478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FE2609926A014E300A23478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FE260A126A02C8400A23478 /* SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		7FE2608A26A014DA00A23478 /* IOSJourney */ = {
 			isa = PBXGroup;
 			children = (
+				7FE260A026A02C6B00A23478 /* popup animation */,
 				7FE2608B26A014DA00A23478 /* AppDelegate.swift */,
 				7FE2608D26A014DA00A23478 /* SceneDelegate.swift */,
 				7FE2608F26A014DA00A23478 /* ViewController.swift */,
@@ -65,6 +68,14 @@
 				7FE2609926A014E300A23478 /* Info.plist */,
 			);
 			path = IOSJourney;
+			sourceTree = "<group>";
+		};
+		7FE260A026A02C6B00A23478 /* popup animation */ = {
+			isa = PBXGroup;
+			children = (
+				7FE260A126A02C8400A23478 /* SlidingView.swift */,
+			);
+			path = "popup animation";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FE2609026A014DA00A23478 /* ViewController.swift in Sources */,
+				7FE260A226A02C8400A23478 /* SlidingView.swift in Sources */,
 				7FE2608C26A014DA00A23478 /* AppDelegate.swift in Sources */,
 				7FE2608E26A014DA00A23478 /* SceneDelegate.swift in Sources */,
 			);
