@@ -28,11 +28,7 @@ class ViewController: UIViewController {
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        popupView?.startAnimation()
-    }
-    
+  
     private func configureAnimateButton() {
         animateButton = UIButton(frame: .init(x: 20, y: view.frame.height - 70, width: view.frame.width - 40, height: 50))
         animateButton.backgroundColor = .red
@@ -43,7 +39,8 @@ class ViewController: UIViewController {
     
     @objc func animateButtonTap() {
         
-        popupView?.startAnimation()
+        popupView?.startAnimation(with: .failure)
+     
 
     }
     

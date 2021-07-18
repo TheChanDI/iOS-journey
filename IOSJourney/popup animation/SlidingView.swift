@@ -12,23 +12,32 @@ import UIKit
 
 final class SlidingView: UIView {
     
+    ///Its a enum of message type.
+    ///Types: Success, Failure, Warning and Information
+     enum MessageType {
+        case success
+        case failure
+        case warning
+        case information
+    }
+    
     //MARK:- Property
     
     ///height for the popup view. default is 100.
-    var popupHeight: CGFloat {
+    private var popupHeight: CGFloat {
         get {
             return 100
         }
     }
     
     ///animation duration. Default is 0.3
-    var animationDuration: TimeInterval = 0.3
+    private var animationDuration: TimeInterval = 0.3
     
     ///duration you want to show the animation for. Default is 1second
-    var animationDelay: TimeInterval = 1
+    private var animationTiming: TimeInterval = 1
     
     ///this property is for automatic dismiss of the view. Default is true. If you want the view to be dismiss by tapping then you can set it to false
-    var automaticDismiss: Bool = true {
+    private var automaticDismiss: Bool = true {
         didSet {
             if !automaticDismiss {
                 configureTouchableEvent()
@@ -61,7 +70,7 @@ final class SlidingView: UIView {
     convenience init(view: UIView) {
         self.init()
         self.translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .blue
+        backgroundColor = #colorLiteral(red: 0.262745098, green: 0.262745098, blue: 0.968627451, alpha: 1)
         mainView = view
         setup()
     }
@@ -71,7 +80,7 @@ final class SlidingView: UIView {
         
         mainView.addSubview(self)
         
-        //this is for popup view frame setup
+        //this is for sliding view frame setup
         topLayoutConstraint = topAnchor.constraint(equalTo: mainView.topAnchor, constant: -popupHeight)
         
         topLayoutConstraint?.isActive = true
@@ -84,7 +93,7 @@ final class SlidingView: UIView {
         
         
         
-        //this is for messabe label inside that popupview
+        //this is for messabe label inside that slidingView
         addSubview(messageLabel)
         NSLayoutConstraint.activate([
             messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
@@ -96,8 +105,32 @@ final class SlidingView: UIView {
     
     //MARK:- Methods
     
-    /// start the animation.
-    func startAnimation() {
+    /// start the animation. Default messageType is Information,  durationInterval = 0.3, durationTiming = 1, automaticDismission = true
+    /// - Parameter type: MessageType
+    /// - Parameter durationInterval: TimeInterval
+    /// - Parameter durationTiming: TimerInterval
+    /// - Parameter automaticDismission: Bool
+    func startAnimation(with type: MessageType = .information,
+                        animationDuration durationInterval: TimeInterval = 0.3,
+                        animationTiming durationTiming: TimeInterval = 1,
+                        isAutomatic automaticDismission: Bool = true) {
+        
+        switch type {
+        case .success:
+            backgroundColor = #colorLiteral(red: 0.4, green: 1, blue: 0.4, alpha: 1)
+        case .failure:
+            backgroundColor = #colorLiteral(red: 1, green: 0.0437336543, blue: 0.1019607843, alpha: 1)
+        case .warning:
+            backgroundColor = #colorLiteral(red: 1, green: 0.7921568627, blue: 0.2196078431, alpha: 1)
+        case .information:
+            backgroundColor = #colorLiteral(red: 0.262745098, green: 0.262745098, blue: 0.968627451, alpha: 1)
+        }
+        
+        animationDuration = durationInterval
+        animationTiming = durationTiming
+        automaticDismiss = automaticDismission
+        
+        
         layer.removeAllAnimations()
         
         if automaticDismiss {
@@ -127,7 +160,7 @@ final class SlidingView: UIView {
             self.startAnimationBlock()
             
         } completion: { (_) in
-            UIView.animate(withDuration: 0.2, delay: self.animationDelay) {
+            UIView.animate(withDuration: 0.2, delay: self.animationTiming) {
                 self.endAnimationBlock()
             }
         }
